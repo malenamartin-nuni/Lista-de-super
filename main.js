@@ -30,3 +30,63 @@ let comprado = listaDeSuper.shift();
 
 // 6. Determinar el nuevo largo del arreglo
 console.log(listaDeSuper.length);
+
+ // PARTE III - Lista de Super
+
+ // 1. Funcion para mostrar los productos numerados
+ 
+function logItems(arreglo) {
+    arreglo.forEach((producto, indice) => {
+        console.log(`${indice}: ${producto}`);
+    });
+}
+
+ // 2. Programa interactivo
+ let comando = "";
+
+ while (comando !== "salir") {
+   comando = prompt(
+     "Escribi un comando: nuevo, listar, borrar o salir"
+   );
+
+   if (comando === null) {
+     comando = "salir";
+   } else {
+     comando = comando.toLowerCase().trim();
+   }
+
+   if (comando === "nuevo") {
+     let producto = prompt("Que producto queres agregar?");
+
+     if (producto !== null && producto.trim() !== "") {
+       listaDeSuper.push(producto.trim());
+       console.log("Producto agregado: " + producto.trim());
+     }
+
+   } else if (comando === "listar") {
+     logItems(listaDeSuper);
+
+   } else if (comando === "borrar") {
+     logItems(listaDeSuper);
+
+     let indice = prompt("Que indice queres borrar?");
+
+     if (indice !== null && indice.trim() !== "" &&
+         Number.isInteger(Number(indice)) &&
+         Number(indice) >= 0 &&
+         Number(indice) < listaDeSuper.length) {
+
+       let eliminado = listaDeSuper.splice(Number(indice), 1);
+       console.log("Producto eliminado: " + eliminado[0]);
+
+     } else {
+       console.log("Indice invalido");
+     }
+
+   } else if (comando === "salir") {
+     console.log("Programa finalizado");
+
+   } else {
+     console.log("Comando no valido");
+   }
+ }
